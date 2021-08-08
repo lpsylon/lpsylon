@@ -1,25 +1,29 @@
 package com.kodilla.testing.shape;
 
-import org.junit.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.Random;
 
 public class ShapeCollectorTestSuite {
-    @Before
+    @BeforeEach
     public void before() {
         System.out.println("Test Case: begin");
     }
-    @After
+    @AfterEach
     public void after() {
         System.out.println("Test Case: end");
     }
-    @BeforeClass
-    public static void beforeClass() {
+    @BeforeEach
+    public   void beforeClass() {
         System.out.println("Test Suite: begin");
     }
-    @AfterClass
-    public static void afterClass() {
+    @AfterEach
+    public   void afterClass() {
         System.out.println("Test Suite: end");
     }
     @Test

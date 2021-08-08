@@ -1,18 +1,21 @@
 package com.kodilla.testing.library;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import src.test.java.com.kodilla.testing.library.LibraryDatabase;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static javafx.beans.binding.Bindings.when;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class BookDirectoryTestSuite {
+public class BookDirectoryTestSuite<BookLibrary> {
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
@@ -42,6 +45,9 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
         // Then
         assertEquals(4, theListOfBooks.size());
+    }
+
+    private LibraryDatabase mock(Class<LibraryDatabase> libraryDatabaseClass) {
     }
 
     @Test
@@ -80,7 +86,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("An");
         // Then
         assertEquals(0, theListOfBooks10.size());
-        verify(libraryDatabaseMock, times(1)).listBooksWithCondition(anyString());
+        verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
     @Test
