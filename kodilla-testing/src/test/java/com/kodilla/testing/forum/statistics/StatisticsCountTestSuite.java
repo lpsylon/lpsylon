@@ -2,8 +2,8 @@ package com.kodilla.testing.forum.statistics;
 
 import com.kodilla.testing.library.forum.statistics.Statistics;
 import com.kodilla.testing.library.forum.statistics.StatisticsCount;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StatisticsCountTestSuite {
+
+    private Assertions Assert;
 
     @Test
     public void testCalculateAdvStatisticsWithMock1(){
@@ -42,7 +44,7 @@ public class StatisticsCountTestSuite {
         int quantityOfUsers = statisticsCount.userQuantity;
 
         //Then
-        Assert.assertEquals(2,quantityOfUsers);
+        Assertions.assertEquals(2,quantityOfUsers);
 
 
     }
