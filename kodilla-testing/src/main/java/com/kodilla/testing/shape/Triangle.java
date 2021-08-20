@@ -1,32 +1,19 @@
 package com.kodilla.testing.shape;
 
-public class Triangle implements Shape {
-    private String shapeName = "Triangle";
-    private double field;
-    //private double a;
-    //private double h;
+class Triangle implements Shape {
+    String name = "triangle";
 
-    public Triangle(double a, double h) {
-        //this.a = a;
-        //this.h = h;
-        this.field = a*h/2;
-    }
     @Override
-    public int hashCode() {
-        return (int)this.field * this.getShapeName().length();
-    }
-    @Override
-    public boolean equals(Shape givenShape){
-        if((givenShape.getShapeName() == this.shapeName) && (givenShape.getField() == this.getField())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     public String getShapeName() {
-        return this.shapeName;
+        return name;
     }
-    public double getField() {
-        return field;
+
+    @Override
+    public void getField() {
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

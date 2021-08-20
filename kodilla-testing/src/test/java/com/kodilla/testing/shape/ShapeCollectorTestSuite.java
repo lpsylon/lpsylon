@@ -1,158 +1,106 @@
 package com.kodilla.testing.shape;
 
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
+import com.kodilla.testing.shape.*;
+import org.junit.jupiter.api.*;
 
-import java.util.List;
-import java.util.Random;
-
+@DisplayName("TDD: Shape Collector Test Suite")
 public class ShapeCollectorTestSuite {
+
+    private static int testCounter = 0;
+
+    @BeforeAll
+    public static void beforeAllTests() {
+        System.out.println("This is the beginning of tests.");
+    }
+
+    @AfterAll
+    public static void afterAllTests() {
+        System.out.println("All tests are finished.");
+    }
+
     @BeforeEach
-    public void before() {
-        System.out.println("Test Case: begin");
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
     }
-    @AfterEach
-    public void after() {
-        System.out.println("Test Case: end");
+
+
+    @Nested
+    @DisplayName("Test for list")
+    class TestList {
+        @DisplayName("when create ShapeCollector with figure, " +
+                "then addFigure should add figure to the shapeList")
+        @Test
+        void testAddFigure(){
+            //Given
+            ShapeCollector figure=new ShapeCollector();
+            Circle circle=new Circle();
+            figure.addFigure(circle);
+
+            //When
+            int result = figure.getShapeListSize();;
+
+            //Then
+            Assertions.assertEquals(1, result);
+        }
+        @DisplayName("when create ShapeCollector with figure and add figure to the shapeList, " +
+                "then removeFigure should remove figure from the shapeList")
+        @Test
+        void testRemoveFigure(){
+            //Given
+            ShapeCollector figure=new ShapeCollector();
+            Circle circle=new Circle();
+            figure.addFigure(circle);
+            figure.removeFigure(circle);
+
+            //When
+            int result = figure.getShapeListSize();;
+
+            //Then
+            Assertions.assertEquals(0, result);
+        }
+        @DisplayName("when create ShapeCollector with figure and add new figure to the shapeList, " +
+                "then getFigure should get figure from the shapeList")
+        @Test
+        void testGetFigure(){
+            //Given
+            ShapeCollector figure=new ShapeCollector();
+            Circle circle=new Circle();
+            figure.addFigure(circle);
+
+            //When
+            Shape result=figure.getFigure(0);
+
+            //Then
+            Assertions.assertEquals(circle, result);
+        }
+        @DisplayName("when create ShapeCollector with figure and add figures to the shapeList, " +
+                "then showFigures should show all figures from the shapeList in one String")
+        @Test
+        void testShowFigures(){
+            //Given
+            ShapeCollector figure=new ShapeCollector();
+            Circle circle=new Circle();
+            Square square=new Square();
+            Triangle triangle=new Triangle();
+            figure.addFigure(circle);
+            figure.addFigure(square);
+            figure.addFigure(triangle);
+
+            //When
+            String result=figure.showFigures();
+            String expectedResult="[circle, square, triangle]";
+
+            //Then
+            Assertions.assertEquals(expectedResult, result);
+        }
+
     }
-    @BeforeEach
-    public   void beforeClass() {
-        System.out.println("Test Suite: begin");
-    }
-    @AfterEach
-    public   void afterClass() {
-        System.out.println("Test Suite: end");
-    }
-    @Test
-    public void testAddFigure(){
-        //Given
-        ShapeCollector collector = new ShapeCollector();
-        int collectionSizeBefore = collector.getShapeList().size();
-        //When
-        Shape newShape = new Circle(15);
-        collector.addFigure(newShape);
-        //Then
-        int collectionSizeAfter = collector.getShapeList().size();
-        if((collectionSizeBefore < collectionSizeAfter) && (collector.getFigure((collectionSizeAfter - 1)).equals(newShape))){
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Adding figure ERROR");
-        }
-    }
-    @Test
-    public void testRemoveFigure(){
-        //Given
-        ShapeCollector collector = new ShapeCollector();
-        for (int i = 1; i < 100; i++) {
-            Shape newShape = new Circle(15);
-            collector.addFigure(newShape);
-        }
-        //When
-        Random rnd = new Random();
-        int j = rnd.nextInt(100);
-        Shape shapeToRemove = new Circle(15);
-        collector.removeFigure(shapeToRemove);
-        //Then
-        List<Shape> collectionSizeAfter = collector.getShapeList();
-        Boolean shapeIsRemoved = true;
-        for(Shape entry :collectionSizeAfter) {
-            if (entry.equals(shapeToRemove)) {
-                shapeIsRemoved = false;
-            }
-        }
-        if(shapeIsRemoved){
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Removing figure ERROR");
-        }
-    }
-    @Test
-    public void testGetFigure(){
-        //Given
-        ShapeCollector collector = new ShapeCollector();
-        for (int i = 1; i < 100; i++) {
-            Shape newShape = new Circle(15);
-            collector.addFigure(newShape);
-        }
-        //When
-        Random rnd = new Random();
-        int j = rnd.nextInt(100);
-        Shape shapeToGet = new Circle(15);
-        //Then
-        if(collector.getFigure(j).equals(shapeToGet)) {
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Getting figure ERROR");
-        }
-    }
-    @Test
-    public void testShowFigures(){
-        //Given
-        ShapeCollector collector = new ShapeCollector();
-        for (int i = 1; i < 100; i++) {
-            Shape newShape = new Circle(15);
-            collector.addFigure(newShape);
-        }
-        String entry = "";
-        for(Shape shape :collector.getShapeList()) {
-            entry += (shape+"\n");
-        }
-        //When
-        String exit = collector.showFigures();
-        //Then
-        if(entry == exit) {
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Showing figure ERROR");
-        }
-    }
-    @Test
-    public void checkCircleFieldCalc(){
-        //Given
-        Random rnd = new Random();
-        double radius = rnd.nextDouble()*100;
-        double exptdField = Math.PI*Math.pow(radius, 2);
-        //When
-        Shape newShape = new Circle(radius);
-        //Then
-        if(newShape.getField() == exptdField) {
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Circle field calculations ERROR");
-        }
-    }
-    @Test
-    public void checkSquareFieldCalc(){
-        //Given
-        Random rnd = new Random();
-        double a = rnd.nextDouble()*100;
-        double exptdField = Math.pow(a, 2);
-        //When
-        Shape newShape = new Square(a);
-        //Then
-        if(newShape.getField() == exptdField) {
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Circle field calculations ERROR");
-        }
-    }
-    @Test
-    public void checkTriangleFieldCalc(){
-        //Given
-        Random rnd = new Random();
-        double a = rnd.nextDouble()*100;
-        double h = rnd.nextDouble()*100;
-        double exptdField = a*h/2;
-        //When
-        Shape newShape = new Triangle(a, h);
-        //Then
-        if(newShape.getField() == exptdField) {
-            System.out.println("Test PASSED");
-        } else {
-            System.out.println("Circle field calculations ERROR");
-        }
+
+    @Nested
+    @DisplayName("Test for Shape")
+    class TestFields {
     }
 }
+
