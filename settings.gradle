@@ -2,4 +2,5 @@ include 'kodilla-testing'
 include 'kodilla-testing:src:main:kodilla-exception'
 findProject(':kodilla-testing:src:main:kodilla-exception')?.name = 'kodilla-exception'
 include 'kodilla-exception'
+include 'kodilla-spring'
 
