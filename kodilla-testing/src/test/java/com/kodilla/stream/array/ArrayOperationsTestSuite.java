@@ -26,12 +26,12 @@ public class ArrayOperationsTestSuite {
     @Nested
     @DisplayName("Test for Array")
     class TestArray {
-        @DisplayName("when create array numbers with with numbers, " +
+        @DisplayName("when create array numbers with numbers, " +
                 "then getAverage should return average number of numbers")
         @Test
         void testGetAverage() {
             //Given
-            int[] numbers = new int[]{1,1,1,1};
+            int[] numbers = new int[]{1,7,9,13};
 
             //When
             double result=ArrayOperations.getAverage(numbers);
