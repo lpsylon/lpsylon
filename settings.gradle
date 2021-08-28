@@ -4,3 +4,5 @@ findProject(':kodilla-testing:src:main:kodilla-exception')?.name = 'kodilla-exce
 include 'kodilla-exception'
 include 'kodilla-spring'
 include 'kodilla-spring-web'
+include 'kodilla-patterns'
+
