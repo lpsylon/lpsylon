@@ -1,10 +1,12 @@
 package com.kodilla.patterns.prototype.library;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LibraryTestSuite {
     @Test
@@ -32,9 +34,9 @@ public class LibraryTestSuite {
         }
 
         //Then
-        Assert.assertTrue(clonedLibrary.getBooks().contains(got1));
-        Assert.assertTrue(clonedLibrary.getName() == "Cloned Library");
-        Assert.assertTrue(clonedLibrary.getBooks().size() == 3);
+      assertTrue(clonedLibrary.getBooks().contains(got1));
+        assertTrue(clonedLibrary.getName() == "Cloned Library");
+      assertTrue(clonedLibrary.getBooks().size() == 3);
     }
 
     @Test
@@ -63,7 +65,7 @@ public class LibraryTestSuite {
         }
 
         //Then
-        Assert.assertTrue(deepClonedLibrary.getBooks().size() == 4);
-        Assert.assertTrue(deepClonedLibrary.getBooks().contains(got4));
+        assertTrue(deepClonedLibrary.getBooks().size() == 4);
+      assertTrue(deepClonedLibrary.getBooks().contains(got4));
     }
 }

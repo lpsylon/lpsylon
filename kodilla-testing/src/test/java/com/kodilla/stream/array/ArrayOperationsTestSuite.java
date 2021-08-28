@@ -23,6 +23,7 @@ public class ArrayOperationsTestSuite {
     }
 
 
+    @Disabled
     @Nested
     @DisplayName("Test for Array")
     class TestArray {

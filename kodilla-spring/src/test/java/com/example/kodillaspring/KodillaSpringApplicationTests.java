@@ -7,6 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class KodillaSpringApplicationTests {
 
     @Test
+    public void  chujdodupy() {
+
+        System.out.println("chujdodupy");
+    }
+
+
+    @Test
     void contextLoads() {
     }
 

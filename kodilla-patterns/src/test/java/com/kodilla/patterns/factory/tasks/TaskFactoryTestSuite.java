@@ -1,7 +1,9 @@
 package com.kodilla.patterns.factory.tasks;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskFactoryTestSuite {
 
@@ -12,8 +14,9 @@ public class TaskFactoryTestSuite {
         //When
         Task shopping = factory.makeTask(TaskFactory.SHOPPING);
         //Then
-        Assert.assertEquals(shopping.getTaskName(), "Buy car");
-        Assert.assertEquals(shopping.isTaskExecuted(), false);
+       assertEquals(shopping.getTaskName(), "Buy car");
+
+       assertEquals(shopping.isTaskExecuted(), false);
     }
 
     @Test
@@ -23,8 +26,8 @@ public class TaskFactoryTestSuite {
         //When
         Task painting = factory.makeTask("PAINTING");
         //Then
-        Assert.assertEquals(painting.getTaskName(), "Paint Mona Lisa");
-        Assert.assertEquals(painting.isTaskExecuted(), false);
+    assertEquals(painting.getTaskName(), "Paint Mona Lisa");
+      assertEquals(painting.isTaskExecuted(), false);
     }
 
     @Test
@@ -35,7 +38,7 @@ public class TaskFactoryTestSuite {
         Task driving = factory.makeTask(TaskFactory.DRIVING);
         driving.executeTask();
         //Then
-        Assert.assertEquals(driving.getTaskName(), "Go to London");
-        Assert.assertEquals(driving.isTaskExecuted(), true);
+      assertEquals(driving.getTaskName(), "Go to London");
+      assertEquals(driving.isTaskExecuted(), true);
     }
 }

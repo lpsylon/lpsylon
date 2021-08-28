@@ -1,7 +1,9 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BigmacTestSuite {
     @Test
@@ -19,7 +21,7 @@ public class BigmacTestSuite {
         int howManyIngredients = bigmac.getIngredients().size();
         String rollType = bigmac.getRoll();
         //Then
-        Assert.assertEquals(2, howManyIngredients);
-        Assert.assertEquals("With sezam", rollType);
+        assertEquals(2, howManyIngredients);
+        assertEquals("With sezam", rollType);
     }
 }

@@ -1,9 +1,10 @@
 package com.kodilla.patterns.strategy.social;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
-public class UserTestSuit {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class UserTestSuite {
 
     @Test
     public void testDefaultSharingStrategies(){
@@ -18,9 +19,13 @@ public class UserTestSuit {
         String peterPostInMedia = zGenPeter.sharePost();
 
         //Then
-        Assert.assertEquals(joePostInMedia,"Published on Twitter");
-        Assert.assertEquals(annaPostInMedia,"Published on Facebook");
-        Assert.assertEquals(peterPostInMedia,"Published on Snapchat");
+//        Assert.assertEquals(joePostInMedia,"Published on Twitter");
+//        Assert.assertEquals(annaPostInMedia,"Published on Facebook");
+//        Assert.assertEquals(peterPostInMedia,"Published on Snapchat");
+
+       assertEquals(joePostInMedia,"Published on Twitter");
+       assertEquals(annaPostInMedia,"Published on Facebook");
+       assertEquals(peterPostInMedia,"Published on Snapchat");
     }
 
     @Test
@@ -33,6 +38,6 @@ public class UserTestSuit {
         String joePostInMedia = millenialsJoe.sharePost();
 
         //Then
-        Assert.assertEquals(joePostInMedia,"Published on Snapchat");
+       assertEquals(joePostInMedia,"Published on Snapchat");
     }
 }

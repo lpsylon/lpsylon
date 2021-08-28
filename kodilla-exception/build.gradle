@@ -9,6 +9,12 @@ repositories {
 }
 
 dependencies {
+    testImplementation('junit:junit:4.13')
+//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'junit', module: 'junit'
+//    }
+//    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.3.9'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
