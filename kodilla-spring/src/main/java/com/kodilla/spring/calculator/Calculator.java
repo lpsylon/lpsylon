@@ -1,40 +1,40 @@
 package com.kodilla.spring.calculator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Calculator {
-
-    private final Display display;
-
     @Autowired
-    public Calculator(final Display display) {
-        this.display = display;
-    }
+    private Display display;
 
     public double add(double a, double b) {
-        double sum = a + b;
-        display.displayValue(sum);
-        return sum;
+        double val = a + b;
+        display.displayValue(val);
+        return val;
     }
 
-    public double sub(double a, double b) {
-        double diff = a - b;
-        display.displayValue(diff);
-        return diff;
+    public double subBFromA(double a, double b) {
+        double val = a - b;
+        display.displayValue(val);
+        return val;
     }
 
     public double mul(double a, double b) {
-        double prod = a * b;
-        display.displayValue(prod);
-        return prod;
+        double val = a * b;
+        display.displayValue(val);
+        return val;
     }
 
-    public double div(double a, double b) {
-        double quot = a / b;
-        display.displayValue(quot);
-        return quot;
+    public double divAbyB(double a, double b) {
+        double val;
+        if (b != 0) {
+            val = a / b;
+            display.displayValue(val);
+        } else {
+            val = -1;
+            System.out.println("You can't divide by 0!");
+        }
+        return val;
     }
-
 }
