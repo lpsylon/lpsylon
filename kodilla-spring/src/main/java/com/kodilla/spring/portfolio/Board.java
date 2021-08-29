@@ -11,6 +11,7 @@ public class Board {
         this.doneList = doneList;
     }
 
+
     public TaskList getToDoList() {
         return toDoList;
     }
@@ -21,5 +22,27 @@ public class Board {
 
     public TaskList getDoneList() {
         return doneList;
+    }
+
+    public void addToToDoList(String task) {
+        toDoList.addTask(task);
+    }
+
+    public void addToInProgressList(String task) {
+        inProgressList.addTask(task);
+    }
+
+    public void addToDoneList(String task) {
+        doneList.addTask(task);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "toDoList=" + toDoList +
+                ", inProgressList=" + inProgressList +
+                ", doneList=" + doneList +
+                '}';
     }
 }
