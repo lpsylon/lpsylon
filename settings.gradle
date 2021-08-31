@@ -6,4 +6,6 @@ include 'kodilla-spring'
 include 'kodilla-spring-web'
 include 'kodilla-patterns'
 include 'kodilla-hibernate'
+include 'kodilla-jdbc:kodilla-jdbc'
+findProject(':kodilla-jdbc:kodilla-jdbc')?.name = 'kodilla-jdbc'
 

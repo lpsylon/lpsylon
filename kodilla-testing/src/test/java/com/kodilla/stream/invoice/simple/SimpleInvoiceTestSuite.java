@@ -17,4 +17,17 @@ public class SimpleInvoiceTestSuite {
         Assertions.assertEquals(108.975, invoice.getValueToPay(), 0.001);
     }
 
+
+    @Test
+    public void shouldReturnProduct2(){
+
+
+        SimpleItem simpleItem = new SimpleItem(new SimpleProduct("Product 2", 11.99), 3.5);
+
+        double value = simpleItem.getValue();
+
+        Assertions.assertEquals( 11.99, value );
+
+    }
+
 }
